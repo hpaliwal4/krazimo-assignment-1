@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "intelligent-code-reviewer"
+version = "0.1.0"
+description = "AI-Powered Intelligent Code Reviewer with RAG and Agent-based Analysis"
+authors = [
+    {name = "Code Reviewer Team", email = "team@codereviewer.ai"}
+]
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "sqlalchemy>=2.0.0",
+    "httpx>=0.25.0",
+    "python-multipart>=0.0.6",
+    "python-dotenv>=1.0.0",
+    
+    # RAG Pipeline Dependencies
+    "GitPython>=3.1.40",
+    "langchain>=0.1.0",
+    "chromadb>=0.4.0",
+    "sentence-transformers>=2.2.0",
+    
+    # AI Agent Dependencies
+    "openai>=1.0.0",
+    
+    # Testing Dependencies
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.6.0",
+    "pre-commit>=3.5.0",
+]
+
+[tool.hatchling.metadata]
+allow-direct-references = true
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+asyncio_mode = "auto" 

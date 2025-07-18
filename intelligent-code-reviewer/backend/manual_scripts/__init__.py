@@ -1,0 +1,1 @@
+# Manual testing scripts for AI Code Reviewer 
